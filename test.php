@@ -7,7 +7,12 @@ foreach($lines as $key => $value){
   $tabArray[$i] = explode("\t", $value);
   $i++;
 }
-print_r($tabArray);
 
-print('Last name is: ' . $tabArray[1][1]);
+foreach($tabArray as $key => $value) {
+  if ($value[12] !== "Alpha") {
+    unset($tabArray[$key]);
+  }
+}
+
+print_r($tabArray);
 ?>
