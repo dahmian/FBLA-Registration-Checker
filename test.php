@@ -14,10 +14,8 @@ print_r(
 function convertFblaTab($fileName) {
   $fileContents = file_get_contents($fileName);
   $lines = explode("\n", $fileContents);
-  $i= 0;
   foreach($lines as $key => $value){
-    $tabArray[$i] = explode("\t", $value);
-    $i++;
+    $tabArray[] = explode("\t", $value);
   }
   return $tabArray;
 }
