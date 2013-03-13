@@ -2,4 +2,4 @@ Student Id	First Name	Last Name	School Name	FBLA Oid	Member Type	State	FBLA Year
 1000000	Arnold	Smith	A High School	10000	FBL	CA			0	Alpha Adviser (1st Free Per School)	Adviser	Alpha	test@example.com							
 1000001	John	Costas	A High School	10000	FBL	CA			0	Alpha Guest/Chaperone	Guest/Chaperone	Alpha	test@example.com							
 1000002	Marvin	Reeves	A High School	10000	FBL	CA	12		2012	Alpha Chapter Member	Member	Alpha			Accounting I					
-1000003	Bob	Tanner	B High School	100	FBL	CA	12		2012	Beta Member	Member	Beta			Job Interview		Parliamentary Procedure	1		
+1000003	Bob	Tanner	B High School	100	FBL	CA	12		2012	Beta Member	Member	Alpha			Parliamentary Procedure		Accounting I	1		
