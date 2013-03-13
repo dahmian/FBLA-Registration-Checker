@@ -1,13 +1,9 @@
 <?php
 
 $tabArray = convertFblaTab('test.tab');
-foreach($tabArray as $key => $value) {
-  if ($value[12] !== "Alpha") {
-    unset($tabArray[$key]);
-  }
-}
-
+print_r(filterBySection($tabArray, 'Beta'));
 print_r($tabArray);
+
 
 function convertFblaTab($fileName) {
   $fileContents = file_get_contents($fileName);
@@ -19,4 +15,14 @@ function convertFblaTab($fileName) {
   }
   return $tabArray;
 }
+
+function filterBySection($registrantArray, $section) {
+  foreach($registrantArray as $key => $value) {
+    if ($value[12] !== $section) {
+      unset($registrantArray[$key]);
+    }
+  }
+  return $registrantArray;
+}
+
 ?>
