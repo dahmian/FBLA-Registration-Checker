@@ -1,8 +1,9 @@
 <?php
 
-$tabArray = convertFblaTab('test.tab');
-print_r(filterBySection($tabArray, 'Beta'));
-print_r($tabArray);
+$tabArray = convertFblaTab('CA-1_FBL_CASECT13_Registrants_1630123.xls');
+getStudentsWhoRequireTranscripts($tabArray);
+//print_r(filterBySection($tabArray, 'Beta'));
+//print_r($tabArray);
 
 
 function convertFblaTab($fileName) {
@@ -23,6 +24,16 @@ function filterBySection($registrantArray, $section) {
     }
   }
   return $registrantArray;
+}
+
+function getStudentsWhoRequireTranscripts($registrantArray) {
+  $studentsThatNeedTranscripts = array();
+  foreach($registrantArray as $key => $value) {
+    if ($value[15] == "Accounting I") {
+      $studentsThatNeedTranscripts[] = $value;
+    }
+  }
+  print_r($studentsThatNeedTranscripts);
 }
 
 ?>
