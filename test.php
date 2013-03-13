@@ -1,5 +1,4 @@
 <?php
-
 $tabArray = convertFblaTab('test.tab');
 
 print_r(
@@ -22,11 +21,11 @@ function convertFblaTab($fileName) {
 }
 
 function filterBySection($registrantArray, $section) {
-  return filterByColumnValue($registrantArray, array(12), $section);
+  return filterByColumnValue($registrantArray, array(12), array($section));
 }
 
 function getStudentsWhoRequireTranscripts($registrantArray) {
-    return filterByColumnValue($registrantArray, array(15, 17), "Accounting I");
+    return filterByColumnValue($registrantArray, array(15, 17), array("Accounting I"));
 }
 
 function getStudentsWhoRequireGradeProof($registrantArray) {
@@ -41,26 +40,20 @@ function getStudentsWhoRequireGradeProof($registrantArray) {
      'Word Processing I',
      'Public Speaking I'
    );
-   $filteredArray = array();
-   foreach($eventsThatRequireProofOfGrade as $key => $value) {
-     $eventMatches = filterByColumnValue($registrantArray, array(15, 17), $value);
-     if (count($eventMatches) > 0) {
-      $filteredArray = array_merge($filteredArray, $eventMatches);
-     }
-   }
-   return $filteredArray;
+   return filterByColumnValue($registrantArray, array(15, 17), $eventsThatRequireProofOfGrade);
 }
 
-function filterByColumnValue($sourceArray, $columnNumber, $stringMatch) {
+function filterByColumnValue($sourceArray, $columnNumbers, $stringMatchs) {
   $filteredArray = array();
-  foreach($sourceArray as $key => $value) {
-    foreach($columnNumber as $columnKey => $columnValue) {
-      if ($value[$columnValue] == $stringMatch) {
-        $filteredArray["'$value[0]'"] = $value; //if key like an int, PHP will store it like an int
+  foreach($sourceArray as $sourceKey => $sourceValue) {
+    foreach($columnNumbers as $columnKey => $columnValue) {
+      foreach($stringMatchs as $matchKey => $matchValue) {
+        if ($sourceValue[$columnValue] == $matchValue) {
+          $filteredArray["'$sourceValue[0]'"] = $sourceValue; //if key like an int, PHP will store it like an int
+        }
       }
     }
   }
   return $filteredArray;
 }
-
 ?>
