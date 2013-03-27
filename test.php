@@ -1,4 +1,7 @@
 <?php
+require 'mustache.php/src/Mustache/Autoloader.php';
+Mustache_Autoloader::register();
+
 include 'convert-tab-to-array.php';
 $tabArray = convertTabFileToArray('test.tab');
 
@@ -44,4 +47,7 @@ function filterByColumnValue($sourceArray, $columnNumbers, $stringMatchs) {
   }
   return $filteredArray;
 }
+
+$m = new Mustache_Engine;
+echo $m->render('Hello, {{planet}}!', array('planet' => 'World'));
 ?>
