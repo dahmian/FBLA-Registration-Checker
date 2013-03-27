@@ -10,6 +10,9 @@ print_r(
     filterBySection($tabArray, 'Alpha')
   )
 );
+$m = new Mustache_Engine;
+$template = file_get_contents('test.mustache');
+echo $m->render($template, array('planet' => 'World'));
 
 function filterBySection($registrantArray, $section) {
   return filterByColumnValue($registrantArray, array(12), array($section));
@@ -47,7 +50,4 @@ function filterByColumnValue($sourceArray, $columnNumbers, $stringMatchs) {
   }
   return $filteredArray;
 }
-
-$m = new Mustache_Engine;
-echo $m->render('Hello, {{planet}}!', array('planet' => 'World'));
 ?>
