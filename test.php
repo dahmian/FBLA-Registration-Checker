@@ -5,14 +5,13 @@ Mustache_Autoloader::register();
 include 'convert-tab-to-array.php';
 $tabArray = convertTabFileToArray('test.tab');
 
-print_r(
-  getStudentsWhoRequireGradeProof(
+$data = getStudentsWhoRequireGradeProof(
     filterBySection($tabArray, 'Alpha')
-  )
 );
+$template_data['students'] = new ArrayIterator($data); 
 $m = new Mustache_Engine;
 $template = file_get_contents('test.mustache');
-echo $m->render($template, array('planet' => 'World'));
+echo $m->render($template, $template_data);
 
 function filterBySection($registrantArray, $section) {
   return filterByColumnValue($registrantArray, array(12), array($section));
@@ -38,7 +37,6 @@ function getStudentsWhoRequireGradeProof($registrantArray) {
 }
 
 function filterByColumnValue($sourceArray, $columnNumbers, $stringMatchs) {
-  $filteredArray = array();
   foreach($sourceArray as $sourceKey => $sourceValue) {
     foreach($columnNumbers as $columnKey => $columnValue) {
       foreach($stringMatchs as $matchKey => $matchValue) {
