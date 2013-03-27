@@ -10,11 +10,11 @@ $data = getStudentsWhoRequireGradeProof(
 renderStudents($data);
 
 function filterBySection($registrantArray, $section) {
-  return filterByColumnValue($registrantArray, array(12), array($section));
+  return filterByColumnValue($registrantArray, array('District/Section'), array($section));
 }
 
 function getStudentsWhoRequireTranscripts($registrantArray) {
-    return filterByColumnValue($registrantArray, array(15, 17), array("Accounting I"));
+    return filterByColumnValue($registrantArray, array('Event1', 'Event2'), array("Accounting I"));
 }
 
 function getStudentsWhoRequireGradeProof($registrantArray) {
@@ -29,6 +29,6 @@ function getStudentsWhoRequireGradeProof($registrantArray) {
      'Word Processing I',
      'Public Speaking I'
    );
-   return filterByColumnValue($registrantArray, array(15, 17), $eventsThatRequireProofOfGrade);
+   return filterByColumnValue($registrantArray, array('Event1', 'Event2'), $eventsThatRequireProofOfGrade);
 }
 ?>
