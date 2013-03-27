@@ -6,7 +6,10 @@ function filterBySection($registrantArray, $section) {
 }
 
 function getStudentsWhoRequireTranscripts($registrantArray) {
-    return filterByColumnValue($registrantArray, array('Event1', 'Event2'), array("Accounting I"));
+    $eventsThatRequireTranscripts = array(
+      'Accounting I'
+    );
+    return filterByColumnValue($registrantArray, array('Event1', 'Event2'), $eventsThatRequireTranscripts);
 }
 
 function getStudentsWhoRequireGradeProof($registrantArray) {
