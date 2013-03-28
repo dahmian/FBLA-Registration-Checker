@@ -4,8 +4,6 @@ require './render-students.php';
 require './convert-tab-to-array.php';
 
 $tabArray = convertTabFileToArray('test.tab');
-$data = getStudentsWhoRequireGradeProof(
-    filterBySection($tabArray, 'Alpha')
-);
+$data = getStudentsInImpromptuSpeaking($tabArray);
 renderStudents($data);
 ?>

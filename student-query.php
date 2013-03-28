@@ -26,4 +26,9 @@ function getStudentsWhoRequireGradeProof($registrantArray) {
    );
    return filterByColumnValue($registrantArray, array('Event1', 'Event2'), $eventsThatRequireProofOfGrade);
 }
+
+
+function getStudentsInImpromptuSpeaking($registrantArray) {
+  return filterByColumnValue($registrantArray, array('Event1', 'Event2'), array('Impromptu Speaking'));
+}
 ?>
